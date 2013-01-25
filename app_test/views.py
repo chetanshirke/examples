@@ -2,6 +2,7 @@ from django.shortcuts import render_to_response
 from django.template import Context, Template, loader
 from django.db import settings
 import socket
+import redis
 
 def base(request, template_file="base.html"):
   return render_to_response(template_file)
@@ -21,4 +22,12 @@ def dbread(request, template_file="dbread.html"):
   cursor.execute('SELECT * FROM app_test')
   rows = cursor.fetchall()
   t = Context({'results': rows})
+  return render_to_response(template_file, t)
+
+def redis(request, template_file="redis.html"):
+  from redis_settings import *
+  r = redis.StrictRedis(host = dbhost, port = 6379, db=0, password = auth)
+  r.set('key', 'succeeded')
+  test = r.get('key')
+  t = Context({'result': test})
   return render_to_response(template_file, t)
