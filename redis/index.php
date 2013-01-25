@@ -28,26 +28,14 @@ include '../config/redis.php';
 $redis = new Redis();
 $redis->connect($host, 6379);
 $redis->auth($auth);
-for ($i=1; $i<=3; $i++)
-  {
-  $redis->set('key$i', 'I am in DB');
-  $num=$i;  
-  }
-
-echo "<b><center> Redis Output From Host($host)</center></b><br><br>";
-
-$i=0;
-while ($i < $num) {
-
-$name="key$i";
-$value=$redis->get('key$i');
-
-echo "<b>$name:$value</b><br><hr><br>";
-
-$i++;
-}
+$redis->set('key', 'I am in DB');
+$result = $redis->get('key');
 
 ?>
+
+<h3>                                                                            
+Redis Configuration = <?php echo $result; ?>                                                                      
+</h3>                                                                           
 
 </div>
 </div>
