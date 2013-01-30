@@ -26,15 +26,15 @@
 include '../config/redis.php';
 
 $redis = new Redis();
-$redis->connect($host, 6379);
+$redis->connect($dbhost, 6379);
 $redis->auth($auth);
-$redis->set('key', 'I am in DB');
+$redis->set('key', 'succeeded');
 $result = $redis->get('key');
 
 ?>
 
 <h3>                                                                            
-Redis Configuration = <?php echo $result; ?>                                                                      
+Redis connection = <?php echo $result; ?>                                                                      
 </h3>                                                                           
 
 </div>
