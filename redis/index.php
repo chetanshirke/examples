@@ -26,8 +26,8 @@
 include '../config/redis.php';
 
 $redis = new Redis();
-$redis->connect($dbhost, 6379);
-$redis->auth($auth);
+$redis->connect($dbhost, $dbport);
+$redis->auth($dbauth);
 $redis->set('key', 'succeeded');
 $result = $redis->get('key');
 

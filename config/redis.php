@@ -1,4 +1,5 @@
 <?php
 $dbhost = "localhost";
-$auth = "";
+$dbauth = "password";
+$dbport = "6379";
 ?>
