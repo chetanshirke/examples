@@ -1,4 +1,5 @@
 import redis
 
-dbhost = "10.151.24.148"
-auth = "adminpw"
+dbhost = "localhost"
+dbauth = "passowrd"
+dbport = "6379"

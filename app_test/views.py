@@ -26,7 +26,7 @@ def dbread(request, template_file="dbread.html"):
 
 def redis(request, template_file="redis.html"):
   from redis_settings import *
-  r = redis.StrictRedis(host = dbhost, port = 6379, db=0, password = auth)
+  r = redis.StrictRedis(host = dbhost, port = dbport, db=0, password = dbauth)
   r.set('key', 'succeeded')
   test = r.get('key')
   t = Context({'result': test})
